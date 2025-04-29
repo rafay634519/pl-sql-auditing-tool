@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PL/SQL Auditor - Smart Code Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 PL/SQL Code Auditor</h1>
+        <p class="subtitle">Analyze and improve your PL/SQL code quality instantly!</p>
+        
+        <form method="post" class="audit-form">
+            <textarea name="plsql_code" placeholder="Paste your PL/SQL code here..." required>{{ code }}</textarea>
+            <button type="submit">🚀 Audit Code</button>
+        </form>
+
+        {% if audit_results %}
+        <div class="results">
+            <h2>📋 Audit Results</h2>
+            <ul>
+                {% for issue in audit_results %}
+                    <li>{{ issue }}</li>
+                {% endfor %}
+            </ul>
+
+            <div class="score">
+                <h3>🧮 Score: {{ score }}%</h3>
+
+                {% if score >= 80 %}
+                    <p class="excellent">✅ Excellent Code Quality</p>
+                {% elif score >= 50 %}
+                    <p class="moderate">⚠️ Moderate Code Quality</p>
+                {% else %}
+                    <p class="poor">❌ Poor Code Quality</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>© 2025 PL/SQL Auditor | Made with ❤️ by Rafay</p>
+    </footer>
+</body>
+</html>
